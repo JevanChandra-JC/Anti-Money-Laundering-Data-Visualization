@@ -1,0 +1,58 @@
+# Speaker Notes: Anti-Money Laundering (AML) Tableau Presentation
+
+This project analyzes potential money laundering activity using a synthetic transaction dataset from January and February 2020. Visualizations were created using Tableau to uncover patterns indicative of suspicious behavior.
+
+---
+
+## Slide 4: Dataset Introduction
+
+The dataset used in this project consists of transaction records, each row representing a transaction with fields such as sender, receiver, and transaction amount.
+
+A manual filter was applied to highlight accounts associated with "Kim" and "Lee" — these accounts were not flagged in the original dataset, but were identified through exploratory analysis and added as a derived attribute for focused investigation. Their role becomes important in later stages.
+
+---
+
+## Slide 5: Basic Account Scatterplot
+
+This visualization shows each account plotted by two features (e.g., total sent vs total received). Each point represents an account identified by name and account key.
+
+We begin to see outliers — accounts behaving very differently from the rest.
+
+---
+
+## Slide 6: Grouped by Owner
+
+We enhanced the previous scatterplot by grouping accounts based on ownership. Accounts related to "Kim and Lee" are colored blue, and all others are orange.
+
+Interestingly, the blue points (Kim & Lee accounts) appear only along the axes — either sending but not receiving, or receiving but not sending. For example:
+- One account consistently sends out large amounts but receives nothing.
+- Other accounts receive money without ever sending any out.
+
+This strongly suggests suspicious structuring of transactions.
+
+---
+
+## Slide 7: Transaction Network
+
+Here, we visualize the flow of transactions using connecting lines between accounts. Each line represents a money transfer.
+
+While the graph is dense, it reveals that many transactions either originate from or are routed through the Kim & Lee group — suggesting they are at the center of a potentially illicit network.
+
+---
+
+## Slide 8: Evidence of Fraud
+
+Based on the patterns observed, we can reasonably suspect fraudulent activity.
+
+Key reasons:
+1. Kim & Lee maintain separate accounts specifically for sending and receiving — a known tactic in money laundering.
+2. Money is transferred into various middleman accounts (e.g., Sherren, Jane, Tony, Jerry), then funneled back into Kim & Lee's receiving accounts.
+3. This "round-tripping" disguises large sums by breaking them into smaller transactions, mimicking normal financial activity.
+
+We identify four key middlemen — the most active being "Jerry", who appears in the most transactions.
+
+---
+
+## Conclusion
+
+The transaction patterns observed are consistent with money laundering behavior. By using Tableau to visualize the flow of money and relationships between accounts, we were able to detect suspicious clusters and highlight potential financial crime.
